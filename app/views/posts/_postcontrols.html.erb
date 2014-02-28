@@ -1,0 +1,3 @@
+<%=link_to 'up', votes_path(:vote => {:upvote => true, :ip => getIP, :post_id => post.id}), :method => :post%>
+<%= post.getVoteLevel%>
+<%=link_to 'down', votes_path(:vote => {:upvote => false, :ip => getIP, :post_id => post.id}), :method => :post%>

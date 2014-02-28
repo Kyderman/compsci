@@ -1,6 +1,7 @@
 <%@posts.reverse.each do |p|%>
 
 	<%=p.content%>
+	<%= render partial: 'postcontrols', :locals => {:post => p}%>
 	
 	<hr>
 <%end%>
