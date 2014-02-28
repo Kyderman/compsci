@@ -1,3 +1,22 @@
-<%=link_to 'up', votes_path(:vote => {:upvote => true, :ip => getIP + getInfo, :post_id => post.id}), :method => :post%>
+<% if(post.votes.where(:upvote => true, :ip => getIP + getInfo).first)%>
+<%= link_to '<span class="glyphicon glyphicon-minus"></span>'.html_safe, 
+		        						votes_path(:vote => {:upvote => true, :ip => getIP + getInfo, :post_id => post.id}), method: :post, data: { confirm: 'Are you sure?' },
+		        						class: 'btn btn-sm btn-info' %>
+<%else%>
+<%= link_to '<span class="glyphicon glyphicon-upload"></span>'.html_safe, 
+		        						votes_path(:vote => {:upvote => true, :ip => getIP + getInfo, :post_id => post.id}), method: :post, data: { confirm: 'Are you sure?' },
+		        						class: 'btn btn-sm btn-success' %>
+<%end%>
+<span class="badge">
 <%= post.getVoteLevel%>
-<%=link_to 'down', votes_path(:vote => {:upvote => false, :ip => getIP + getInfo, :post_id => post.id}), :method => :post%>
+</span>
+
+<% if(post.votes.where(:upvote => false, :ip => getIP + getInfo).first)%>
+<%= link_to '<span class="glyphicon glyphicon-minus"></span>'.html_safe, 
+		        						votes_path(:vote => {:upvote => false, :ip => getIP + getInfo, :post_id => post.id}), method: :post, data: { confirm: 'Are you sure?' },
+		        						class: 'btn btn-sm btn-info' %>
+<%else%>
+<%= link_to '<span class="glyphicon glyphicon-download"></span>'.html_safe, 
+		        						votes_path(:vote => {:upvote => false, :ip => getIP + getInfo, :post_id => post.id}), method: :post, data: { confirm: 'Are you sure?' },
+		        						class: 'btn btn-sm btn-danger' %>
+<%end%>
