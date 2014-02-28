@@ -16,4 +16,8 @@ module ApplicationHelper
   ensure
   Socket.do_not_reverse_lookup = orig
   end
+  
+  def ip
+  return request.env["HTTP_X_FORWARDED_FOR"]
+  end
 end

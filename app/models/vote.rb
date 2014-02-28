@@ -17,6 +17,7 @@ class Vote < ActiveRecord::Base
   
   def isValid?
     if(a = self.post.votes.where(:ip => self.ip).first)
+      
       if(a.isUpvote?)
         if(self.isUpvote?)
           self.destroy
