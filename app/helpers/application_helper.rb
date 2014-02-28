@@ -18,6 +18,6 @@ module ApplicationHelper
   end
   
   def ip
-  return request.env["HTTP_X_FORWARDED_FOR"]
+  return request.remote_addr
   end
 end
