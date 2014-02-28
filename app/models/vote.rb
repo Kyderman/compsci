@@ -38,6 +38,7 @@ class Vote < ActiveRecord::Base
       self.save
       
     end
+    return true
   end
   
   
