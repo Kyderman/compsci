@@ -1,7 +1,7 @@
 <% if(post.votes.where(:upvote => true, :ip => getIP + getInfo).first)%>
 <%= link_to '<span class="glyphicon glyphicon-minus"></span>'.html_safe, 
 		        						votes_path(:vote => {:upvote => true, :ip => getIP + getInfo, :post_id => post.id}), method: :post, data: { confirm: 'Are you sure?' },
-		        						class: 'btn btn-sm btn-info' %>
+		        						class: 'btn btn-sm btn-info'%>
 <%else%>
 <%= link_to '<span class="glyphicon glyphicon-upload"></span>'.html_safe, 
 		        						votes_path(:vote => {:upvote => true, :ip => getIP + getInfo, :post_id => post.id}), method: :post, data: { confirm: 'Are you sure?' },
